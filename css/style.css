@@ -57,3 +57,25 @@
     color: white;
 
 }
+
+.mySlide {
+    display: none;
+}
+
+.mySlide.active {
+    display: block;
+}
+
+.mySlide h2 {
+    position: absolute;
+    bottom: 100px;
+    left: 10px;
+    color: white;
+}
+
+.mySlide p {
+    position: absolute;
+    bottom: 30px;
+    left: 10px;
+    color: white;
+}

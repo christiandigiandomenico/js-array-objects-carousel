@@ -22,9 +22,68 @@ const images = [
     }
 ];
 
-const slider = document.getElementById('slider');
-const imagesContainer = document.getElementById('image-container');
-const arrowUp = document.getElementById('up-arrow');
-const arrowDown = document.getElementById('down-arrow');
+const slides = document.querySelector("#slider")
+
+for (let i = 0; i < images.length; i++) {
+
+    const img = images[i].image;
+
+    const titolo = images[i].title
+
+    const desc = images[i].text
+
+    slides.innerHTML += `<div class="mySlide"><img src="./${img}"><h2>${titolo}</h2><p> ${desc}<p></div>`
+
+}
+
+function showSlide(n) {
+
+    const arraySlides = document.getElementsByClassName("mySlide")
+
+    for (let i = 0; i < arraySlides.length; i++) {
+
+        if (i == n) {
+
+            arraySlides[i].classList.add("active");
+
+        } else {
+
+            arraySlides[i].classList.remove("active")
+
+        }
+
+    }
+
+    arraySlides[n].classList.add("active")
+
+}
+
+function showSlide(n) {
+    const arraySlides = document.getElementsByClassName("mySlide");
+    for (let i = 0; i < arraySlides.length; i++) {
+        arraySlides[i].classList.remove("active");
+    }
+    arraySlides[n].classList.add("active");
+}
+
+let activeSlide = 0;
+
+showSlide(activeSlide);
 
 
+document.getElementById("down-arrow").addEventListener("click", function () {
+    activeSlide++;
+    if (activeSlide >= images.length) {
+        activeSlide = 0;
+    }
+    showSlide(activeSlide);
+});
+
+
+document.getElementById("up-arrow").addEventListener("click", function () {
+    activeSlide--;
+    if (activeSlide < 0) {
+        activeSlide = images.length - 1;
+    }
+    showSlide(activeSlide);
+});
